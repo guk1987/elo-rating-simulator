@@ -51,6 +51,8 @@ create_max_user = 2000
 start_elo_point = 1200
 sample_size = 10
 
+session_cnt = 500000
+
 tier = {
     "master": 0.01,
     "diamond": 0.04,
@@ -64,7 +66,7 @@ tier = {
 users = create_user(create_max_user, start_elo_point)
 
 
-for i in range(500):
+for i in range(session_cnt):
 
     a_team, b_team = get_team(users, sample_size)
 
@@ -151,7 +153,10 @@ for i in range(500):
     playing_user.iloc[master_cnt+diamond_cnt+platinum_cnt+gold_cnt+silver_cnt:master_cnt +
                       diamond_cnt+platinum_cnt+gold_cnt+silver_cnt+bronze_cnt, :]['tier'] = 'bronze'
 
-    print(i)
+    # 10% 진행률마다 체크
+    if (i % (session_cnt/100)) == 0:
+        print(f'진행률: {int(i / session_cnt * 100)}% ({i} / {session_cnt})')
 
+print("진행률: 100%")
 # to excel file.
-playing_user.to_excel('users.xlsx')
+playing_user.to_excel(f'users_{session_cnt}.xlsx')

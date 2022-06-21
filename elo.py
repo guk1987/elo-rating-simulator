@@ -160,7 +160,8 @@ for i in range(session_cnt):
     # 게임 매치!!
     # print(f"A팀({a_team_elo_r}점 / 승률 : {a_team_win_e_r*100}%\n                      VS                      \nB팀({b_team_elo_r}점 / 승률 : {b_team_win_e_r*100}%")
     # 0 = 패배 / 1 = 무승부 / 2 = 승리
-    # 모두 동일한 확률로 choice
+
+    # 팀 별 실제 실력 기반 승률 (_r) 가중치 (weights) 반영된 게임 결과
     win_rst = random.choices(range(0, 3), weights=[
         a_team_win_e_r, 0, b_team_win_e_r])
 

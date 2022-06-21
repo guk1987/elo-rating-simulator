@@ -1,7 +1,4 @@
-from cmath import exp
-import turtle
 import pandas as pd
-import numpy as np
 import random
 from random import choices
 import warnings
@@ -107,12 +104,13 @@ def update_users(df_a, df_b):
 ############################################ 시뮬레이션 시작 코드 ############################################
 
 
-create_max_user = 200
-start_elo_point = 1200
-sample_size = 10
+################# 세팅값 #################
+create_max_user = 200   # 유저 생성 숫자
+start_elo_point = 1200  # 시작 elo 포인트
+sample_size = 10  # 팀 생성시 사용되는 유저 수. ex) 10 = 10인방으로 각 팀당 5명 배당
+session_cnt = 100  # 세션 수 (시뮬레이션 할 총 게임 수)
 
-session_cnt = 100
-
+# 티어별 인원 %
 tier = {
     "master": 0.01,
     "diamond": 0.04,
@@ -122,6 +120,7 @@ tier = {
     "bronze": 0.35,
 }
 
+# 티어별 세팅되는 k 값
 tier_k = {
     "master": 20,
     "diamond": 30,

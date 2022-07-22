@@ -105,10 +105,10 @@ def update_users(df_a, df_b):
 
 
 ################# 세팅값 #################
-create_max_user = 200   # 유저 생성 숫자
-start_elo_point = 1200  # 시작 elo 포인트
-sample_size = 10  # 팀 생성시 사용되는 유저 수. ex) 10 = 10인방으로 각 팀당 5명 배당
-session_cnt = 100  # 세션 수 (시뮬레이션 할 총 게임 수)
+create_max_user = 5000   # 유저 생성 숫자
+start_elo_point = 1000  # 시작 elo 포인트
+sample_size = 12  # 팀 생성시 사용되는 유저 수. ex) 10 = 10인방으로 각 팀당 5명 배당
+session_cnt = 1000  # 세션 수 (시뮬레이션 할 총 게임 수)
 
 # 티어별 인원 %
 tier = {
@@ -218,4 +218,4 @@ print("진행률: 100%")
 
 # 최종 결과 값을 excel 파일로 저장
 playing_user.to_excel(
-    f'elo_createUsers_{create_max_user}_sessionCnt_{session_cnt}_tierK_[{tier_k["master"]},{tier_k["diamond"]},{tier_k["platinum"]},{tier_k["gold"]},{tier_k["silver"]},{tier_k["bronze"]}].xlsx')
+    f'elo_createUsers_{create_max_user}_sessionCnt_{session_cnt}_startElo_{start_elo_point}_tierK_[{tier_k["master"]},{tier_k["diamond"]},{tier_k["platinum"]},{tier_k["gold"]},{tier_k["silver"]},{tier_k["bronze"]}].xlsx')
